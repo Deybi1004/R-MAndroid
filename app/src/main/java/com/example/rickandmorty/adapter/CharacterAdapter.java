@@ -11,9 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.rickandmorty.Character2;
+import com.example.rickandmorty.model.Character2;
 import com.example.rickandmorty.R;
-import com.example.rickandmorty.model.Character;
 
 import java.util.List;
 

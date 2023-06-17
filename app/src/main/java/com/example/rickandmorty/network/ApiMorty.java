@@ -1,10 +1,7 @@
 package com.example.rickandmorty.network;
 
-import com.example.rickandmorty.Character2;
-import com.example.rickandmorty.DtoCharacters;
-import com.example.rickandmorty.model.Character;
+import com.example.rickandmorty.model.DtoCharacters;
 
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

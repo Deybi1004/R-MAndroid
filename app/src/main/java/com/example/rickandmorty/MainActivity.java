@@ -9,7 +9,8 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.rickandmorty.adapter.CharacterAdapter;
-import com.example.rickandmorty.model.Character;
+import com.example.rickandmorty.model.Character2;
+import com.example.rickandmorty.model.DtoCharacters;
 import com.example.rickandmorty.network.ApiClient;
 import com.example.rickandmorty.network.ApiMorty;
 
