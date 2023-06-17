@@ -21,6 +21,7 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     private List<Character2> characters;
+    private DtoCharacters responseCharacter;
     private RecyclerView recyclerView;
     private CharacterAdapter characterAdapter;
 
@@ -34,13 +35,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showCharacters() {
-        Call<List<Character2>> call = ApiClient.getClient().create(ApiMorty.class).getCharacters();
-        call.enqueue(new Callback<List<Character2>>() {
+        Call<DtoCharacters> call = ApiClient.getClient().create(ApiMorty.class).getCharacters();
+        call.enqueue(new Callback<DtoCharacters>() {
             @Override
-            public void onResponse(Call<List<Character2>> call, Response<List<Character2>> response) {
+            public void onResponse(Call<DtoCharacters> call, Response<DtoCharacters> response) {
                 if (response.isSuccessful()) {
-                    characters = response.body();
-
+                    responseCharacter = response.body();
+                    characters = responseCharacter.getResults();
                     characterAdapter = new CharacterAdapter(characters, getApplicationContext());
                     recyclerView.setAdapter(characterAdapter);
                 } else {
@@ -49,8 +50,9 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<Character2>> call, Throwable t) {
-                Toast.makeText(MainActivity.this, "ERROR DE CONEXIÓN ONFAILURE", Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<DtoCharacters> call, Throwable t) {
+                Toast.makeText(MainActivity.this, t.toString(), Toast.LENGTH_SHORT).show();
+                Log.d("Error onFailure",t.toString());
             }
         });
     }
